@@ -5,36 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "commands/RotateControlPanel.h"
-#include "subsystems/ControlPanelManipulator.h"
+#include "commands/DriveWithPixy.h"
 
-RotateControlPanel::RotateControlPanel(ControlPanelManipulator *pControlPanel, DriveTrain *pSubsystemDrive) {
-  AddRequirements({pControlPanel});
-  AddRequirements({pSubsystemDrive});
+DriveWithPixy::DriveWithPixy(DriveTrain* pDriveTrain) : mpDriveTrain{pDriveTrain} {
   // Use addRequirements() here to declare subsystem dependencies.
-  mpControlPanel = pControlPanel;
-  mpSubsystemDrive = pSubsystemDrive;
+  AddRequirements(pDriveTrain);
 }
 
 // Called when the command is initially scheduled.
-void RotateControlPanel::Initialize() {
-  mpControlPanel->resetFinished();
-}
+void DriveWithPixy::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
-void RotateControlPanel::Execute() {
-  mpControlPanel->rotationControl();
-  mpSubsystemDrive->slowlyDriveForwards();
-  printf("Running Rot\n");
+void DriveWithPixy::Execute() {
+  mpDriveTrain->driveWithPixy();
 }
 
 // Called once the command ends or is interrupted.
-void RotateControlPanel::End(bool interrupted) {
-  printf("Rotation complete!\n");
-  mpSubsystemDrive->stop();
-}
+void DriveWithPixy::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool RotateControlPanel::IsFinished() {
-  return mpControlPanel->getFinished();
-}
+bool DriveWithPixy::IsFinished() { return false; }

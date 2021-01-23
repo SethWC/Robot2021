@@ -7,12 +7,13 @@
 
 #pragma once
 
+#include "Constants.h"
 #include <frc2/command/SubsystemBase.h>
 #include <frc/SpeedControllerGroup.h>
 #include <ctre/Phoenix.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
-
+#include <frc/AnalogInput.h>
 
 
 class DriveTrain : public frc2::SubsystemBase {
@@ -23,6 +24,7 @@ class DriveTrain : public frc2::SubsystemBase {
   void driveWithXboxController();
   void arcadeDrive();
   void toggleDrive();
+  void driveWithPixy();
   void setDriverJoystick(frc::XboxController* pDriverJoystick){
     mpDriverJoystick = pDriverJoystick;
   };
@@ -35,6 +37,9 @@ class DriveTrain : public frc2::SubsystemBase {
 
 
  private:
+
+  frc::AnalogInput mAnalogLeft{kAnalogLeft};
+  frc::AnalogInput mAnalogRight{kAnalogRight};
 
   frc::XboxController* mpDriverJoystick;
 

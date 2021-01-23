@@ -28,3 +28,6 @@ int constexpr kControlPanelMotor = 4;
 int constexpr kDriverJoystick = 0;
 int constexpr kOperatorJoystick = 1;
 
+//Analog Inputs
+int constexpr kAnalogLeft = 0;
+int constexpr kAnalogRight = 1;

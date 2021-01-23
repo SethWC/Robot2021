@@ -36,6 +36,14 @@ void DriveTrain::driveWithXboxController(){
 
 }
 
+void DriveTrain::driveWithPixy() {
+    double leftSpeed = (mAnalogLeft.GetVoltage() - 2.5) / 2.5;
+    double rightSpeed = (mAnalogLeft.GetVoltage() - 2.5) / 2.5;
+    
+    mDrive.TankDrive(-leftSpeed, -rightSpeed, false);
+    printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
+}
+
 void DriveTrain::arcadeDrive(){
     double speed = mpDriverJoystick->GetRawAxis(1); //Cap: 690rpm
     double rotation = mpDriverJoystick->GetRawAxis(0); //Cap: 697rpm

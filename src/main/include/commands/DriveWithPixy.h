@@ -9,8 +9,7 @@
 
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
-#include <subsystems/ControlPanelManipulator.h>
-#include <subsystems/DriveTrain.h>
+#include "subsystems/DriveTrain.h"
 
 /**
  * An example command.
@@ -19,10 +18,10 @@
  * directly; this is crucially important, or else the decorator functions in
  * Command will *not* work!
  */
-class StopControlPanel
-    : public frc2::CommandHelper<frc2::CommandBase, StopControlPanel> {
+class DriveWithPixy
+    : public frc2::CommandHelper<frc2::CommandBase, DriveWithPixy> {
  public:
-  StopControlPanel(ControlPanelManipulator* pControlPanel, DriveTrain* pSubsystemDrive);
+  DriveWithPixy(DriveTrain* pDriveTrain);
 
   void Initialize() override;
 
@@ -31,7 +30,6 @@ class StopControlPanel
   void End(bool interrupted) override;
 
   bool IsFinished() override;
-  private:
-  ControlPanelManipulator* mpControlPanel;
-  DriveTrain* mpSubsystemDrive;
+ private:
+  DriveTrain* mpDriveTrain;
 };
