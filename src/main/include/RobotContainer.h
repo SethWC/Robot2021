@@ -29,6 +29,7 @@
 #include "commands/drive/SlowTurn.h"
 #include "commands/drive/FlipDrive.h"
 #include "commands/powercell/BallJam.h"
+#include "commands/powercell/IndexSingleCell.h"
 #include "commands/powercell/IndexPowerCell.h"
 #include "commands/powercell/LowerArm.h"
 #include "commands/powercell/PrepShooting.h"
@@ -116,6 +117,7 @@ class RobotContainer {
   Shooter mShooter;
   BallJam mBallJamCommand{&mIndexer, &mShooter};
   IndexPowerCell mIndexCommand{&mIndexer};
+  IndexSingleCell mIndexOnceCommand{&mIndexer};
   LowerArm mLowerArmCommand{&mIntake, &mIndexer};
   PrepShooting mPrepShootingSlow{&mIndexer, &mShooter, kSlowSpeed};
   PrepShooting mPrepShootingMed{&mIndexer, &mShooter, kMedSpeed};
