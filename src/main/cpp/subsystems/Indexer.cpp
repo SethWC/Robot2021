@@ -112,7 +112,7 @@ void Indexer::shootPowerCells(){
 //Check if ball has been at bottom sensor for long enough
 bool Indexer::isPowerCellAtBottom(){
     if (mIndexTimer.Get() > kBottomIndexerTimeout) {
-        printf("Jesus christ stop\n");
+        //printf("Jesus christ stop\n");
         mPowerCellWasAtBottom = false;
         //mBottomTimer = 0;
         mIndexTimer.Stop();

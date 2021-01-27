@@ -43,6 +43,7 @@ class Indexer : public frc2::SubsystemBase {
     void enable() {enabled = true;}
     void disable() {enabled = false;}
     bool isEnabled() {return enabled;}
+    void addPowerCell() {mNumPowerCells++;}
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */

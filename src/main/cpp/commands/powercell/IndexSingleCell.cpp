@@ -26,6 +26,7 @@ void IndexSingleCell::Execute() {
 // Called once the command ends or is interrupted.
 void IndexSingleCell::End(bool interrupted) {
   mpIndexer->stopIndexer();
+  mpIndexer->addPowerCell();
 }
 
 // Returns true when the command should end.
