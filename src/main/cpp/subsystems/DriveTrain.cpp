@@ -38,7 +38,7 @@ void DriveTrain::driveWithXboxController(){
 
 void DriveTrain::driveWithPixy() {
     double leftSpeed = (mAnalogLeft.GetVoltage() - 2.5) / 2.5;
-    double rightSpeed = (mAnalogLeft.GetVoltage() - 2.5) / 2.5;
+    double rightSpeed = (mAnalogRight.GetVoltage() - 2.5) / 2.5;
     
     mDrive.TankDrive(-leftSpeed, -rightSpeed, false);
     printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
