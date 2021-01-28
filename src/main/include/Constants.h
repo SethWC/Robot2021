@@ -22,6 +22,7 @@ int constexpr kTopRightMotor = 1;
 int constexpr kBottomLeftMotor = 2;
 int constexpr kBottomRightMotor = 3;
 int constexpr kControlPanelMotor = 4;
+int constexpr kIndexerMotor = 2;
 
 
 //OI Indexes (joysticks/buttons)

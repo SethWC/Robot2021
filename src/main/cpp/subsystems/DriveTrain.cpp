@@ -14,7 +14,8 @@ DriveTrain::DriveTrain():
     mDriveLeft1{kTopLeftMotor}, 
     mDriveLeft2{kBottomLeftMotor}, 
     mDriveRight1{kTopRightMotor}, 
-    mDriveRight2{kBottomRightMotor}
+    mDriveRight2{kBottomRightMotor},
+    mIndexerConveyer{kIndexerMotor}
  {
 
 }
@@ -42,6 +43,8 @@ void DriveTrain::driveWithPixy() {
     
     mDrive.TankDrive(-leftSpeed, -rightSpeed, false);
     printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
+
+    mIndexerConveyer.Set(frc::Relay::kForward);
 }
 
 void DriveTrain::arcadeDrive(){

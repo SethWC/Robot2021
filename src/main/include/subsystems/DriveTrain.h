@@ -14,7 +14,7 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
 #include <frc/AnalogInput.h>
-
+#include <frc/Relay.h>
 
 class DriveTrain : public frc2::SubsystemBase {
  public:
@@ -47,6 +47,8 @@ class DriveTrain : public frc2::SubsystemBase {
   WPI_TalonSRX mDriveLeft2;
   WPI_TalonSRX mDriveRight1;
   WPI_TalonSRX mDriveRight2;
+
+  frc::Relay mIndexerConveyer;
 
   frc::SpeedControllerGroup mLeft{mDriveLeft1, mDriveLeft2};
   frc::SpeedControllerGroup mRight{mDriveRight1, mDriveRight2};
