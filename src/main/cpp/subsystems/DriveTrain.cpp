@@ -44,7 +44,9 @@ void DriveTrain::driveWithPixy() {
     mDrive.TankDrive(-leftSpeed, -rightSpeed, false);
     printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
 
-    mIndexerConveyer.Set(frc::Relay::kForward);
+    if (!mTopSensor.Get()) {
+        mIndexerConveyer.Set(frc::Relay::kForward);
+    }
 }
 
 void DriveTrain::arcadeDrive(){

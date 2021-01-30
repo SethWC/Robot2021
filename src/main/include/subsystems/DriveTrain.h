@@ -15,6 +15,7 @@
 #include <frc/XboxController.h>
 #include <frc/AnalogInput.h>
 #include <frc/Relay.h>
+#include <frc/DigitalInput.h>
 
 class DriveTrain : public frc2::SubsystemBase {
  public:
@@ -40,6 +41,7 @@ class DriveTrain : public frc2::SubsystemBase {
 
   frc::AnalogInput mAnalogLeft{kAnalogLeft};
   frc::AnalogInput mAnalogRight{kAnalogRight};
+  frc::DigitalInput mTopSensor{2};
 
   frc::XboxController* mpDriverJoystick;
 
