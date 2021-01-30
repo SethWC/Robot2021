@@ -15,6 +15,7 @@ class Pneumatics : public frc2::SubsystemBase {
  public:
   Pneumatics();
   void toggleLift();
+  void dropLift();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

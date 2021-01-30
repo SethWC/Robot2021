@@ -79,3 +79,7 @@ frc2::Command* RobotContainer::GetAutonomousCommand(int slot, bool shoot, int mo
   //return &mAutoCommand;
   return new AutonomousCode(&mTankDrive, &mIntake, &mIndexer, &mShooter, slot, shoot, move, shoot2);
 }
+
+void RobotContainer::dropLift() {
+  mDropLift.Schedule();
+}

@@ -14,5 +14,9 @@ void Pneumatics::toggleLift() {
     mLift.Set(mEnabled);
 }
 
+void Pneumatics::dropLift() {
+    mLift.Set(false);
+}
+
 // This method will be called once per scheduler run
 void Pneumatics::Periodic() {}

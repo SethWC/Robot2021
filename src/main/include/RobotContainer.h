@@ -49,6 +49,7 @@
 #include "commands/PreviousCamera.h"
 #include "commands/NextCamera.h"
 #include "commands/ToggleLift.h"
+#include "commands/DropLift.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -67,6 +68,7 @@ class RobotContainer {
     return &mDriverController;
   }
   
+  void dropLift();
 
  private:
  
@@ -145,6 +147,7 @@ class RobotContainer {
 
   Pneumatics mPneumatics;
   ToggleLift mToggleLift{&mPneumatics};
+  DropLift mDropLift{&mPneumatics};
 
   void ConfigureButtonBindings();
 };

@@ -133,6 +133,7 @@ void Robot::TeleopInit() {
     mAutonomousCommand = nullptr;
   }
   //m_container.GetDeployManipulatorCommand()->Schedule();
+  mContainer.dropLift();
 }
 
 /**
