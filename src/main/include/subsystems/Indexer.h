@@ -9,6 +9,7 @@
 
 #include <frc2/command/SubsystemBase.h>
 #include <frc/Relay.h>
+#include <ctre/Phoenix.h>
 #include <frc/DigitalInput.h>
 #include <frc/Timer.h>
 #include "Constants.h"
@@ -38,6 +39,10 @@ class Indexer : public frc2::SubsystemBase {
     void stopIndexer(){mIndexerConveyer.Set(frc::Relay::kOff);}
     void moveUpIndexer() {mIndexerConveyer.Set(frc::Relay::Value::kForward);}
     void moveDownIndexer() {mIndexerConveyer.Set(frc::Relay::kReverse);}
+    /*void stopIndexer(){mIndexerConveyer.Set(0);}
+    void moveUpIndexer() {mIndexerConveyer.Set(0.5);}
+    void moveDownIndexer() {mIndexerConveyer.Set(-0.5);}
+    */
     void resetRunningOnEmpty() {mEmptyTimer = 0;}
     bool isRunningOnEmpty() {return (mEmptyTimer>=kMaxPowerCellTravelTime);}
     void enable() {enabled = true;}

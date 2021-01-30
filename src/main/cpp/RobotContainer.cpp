@@ -30,8 +30,6 @@ RobotContainer::RobotContainer()
     .WithWidget(frc::BuiltInWidgets::kCameraStream)
     .WithSize (4,3)
     .WithPosition (4,0);
-
-  mClimber.SetDefaultCommand(std::move(mClimbCommand));
   
   mIndexer.SetDefaultCommand(std::move(mIndexCommand));
   
