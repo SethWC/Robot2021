@@ -125,12 +125,12 @@ bool Indexer::isPowerCellAtBottom(){
 
 // This method will be called once per scheduler run
 void Indexer::Periodic() {
-    if (rawPowerCellAtBottom()) {
+    /*if (rawPowerCellAtBottom()) {
         mPowerCellWasAtBottom = true;
         mIndexTimer.Reset();
         printf("RESETTING TIMER\n");
         mIndexTimer.Start();
-    }
+    }*/
     /*if (mPowerCellWasAtBottom && mIndexTimer.Get() < 2) { //Max 2 seconds
         mBottomTimer += 1;
     }

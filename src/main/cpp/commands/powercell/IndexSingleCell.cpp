@@ -21,6 +21,7 @@ void IndexSingleCell::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void IndexSingleCell::Execute() {
   timer++;
+  printf("Indexing single cell\n");
 }
 
 // Called once the command ends or is interrupted.
@@ -31,5 +32,5 @@ void IndexSingleCell::End(bool interrupted) {
 
 // Returns true when the command should end.
 bool IndexSingleCell::IsFinished() { 
-  return (timer * 20.0 < 500);
+  return (timer * 20.0 >= 500);
 }
