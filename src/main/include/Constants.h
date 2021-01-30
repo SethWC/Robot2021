@@ -77,9 +77,9 @@ int constexpr kOperatorJoystick = 1;
 float constexpr kAutoMoveTicks = 3 * 50; //3 sec * 50 ticks/sec
 
 //Shooter Speeds
-float constexpr kSlowSpeed = 0.2;
-float constexpr kMedSpeed = 0.58;
-float constexpr kFastSpeed = 0.63;
+float constexpr kSlowSpeed = 0.5;
+float constexpr kMedSpeed = 0.9;
+float constexpr kFastSpeed = 1.0;
 
 //Indexer Constants
 int constexpr kMaxPowerCellTravelTime = 100;
