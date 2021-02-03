@@ -14,7 +14,7 @@
 
 Intake::Intake():
     mIntakeArmMotor{kIntakeMotor,frc::Relay::kBothDirections},
-    mIntakeRollerMotor{kIntakeRollerMotor, frc::Relay::kBothDirections},
+    mIntakeRollerMotor{kIntakeRollerMotor},
     mUpSensor{kIntakeTopSensor},
     mDownSensor{kIntakeBottomSensor}
  {
@@ -52,18 +52,18 @@ void Intake::stopIntakeArm(){
 //startRollers - start the intake arms rollers, to capture power cells
 void Intake::startRollers() {
     printf("Rollers should be moving\n");
-    mIntakeRollerMotor.Set(frc::Relay::kReverse);
+    mIntakeRollerMotor.Set(-kIntakeRollerSpeed);
     printf("Status: %d", mIntakeRollerMotor.IsAlive());
 }
 //startReversRollers - start the intake arm rollers in reverse - this is to
 //  spit out power cells in the event the power cell intake needs to be
 //  cleared
 void Intake::startReverseRollers(){
-    mIntakeRollerMotor.Set(frc::Relay::kForward);
+    mIntakeRollerMotor.Set(kIntakeRollerSpeed);
 }
 //stopRollers - stop the intake arm roller motors from running
 void Intake::stopRollers() {
-    mIntakeRollerMotor.Set(frc::Relay::kOff);
+    mIntakeRollerMotor.Set(0);
 }
 // This method will be called once per scheduler run
 void Intake::Periodic() {}
