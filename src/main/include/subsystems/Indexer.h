@@ -38,7 +38,7 @@ class Indexer : public frc2::SubsystemBase {
     bool rawPowerCellAtBottom(){return mBottomSensor.Get();}
     void stopIndexer(){mIndexerConveyer.Set(0);}
     void moveUpIndexer() {mIndexerConveyer.Set(kIndexSpeed);}
-    void moveDownIndexer() {mIndexerConveyer.Set(kIndexSpeed);}
+    void moveDownIndexer() {mIndexerConveyer.Set(-kIndexSpeed);}
     /*void stopIndexer(){mIndexerConveyer.Set(0);}
     void moveUpIndexer() {mIndexerConveyer.Set(0.5);}
     void moveDownIndexer() {mIndexerConveyer.Set(-0.5);}
