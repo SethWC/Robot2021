@@ -24,11 +24,13 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/ControlPanelManipulator.h"
 #include "subsystems/Lights.h"
+#include "subsystems/Pneumatics.h"
 
 #include "commands/drive/DriveWithXbox.h"
 #include "commands/drive/SlowTurn.h"
 #include "commands/drive/FlipDrive.h"
 #include "commands/powercell/BallJam.h"
+#include "commands/powercell/IndexSingleCell.h"
 #include "commands/powercell/IndexPowerCell.h"
 #include "commands/powercell/LowerArm.h"
 #include "commands/powercell/PrepShooting.h"
@@ -44,9 +46,9 @@
 #include "commands/MoveCameraServo.h"
 #include "commands/NextCamera.h"
 #include "commands/PreviousCamera.h"
-
 #include "commands/NextCamera.h"
-
+#include "commands/ToggleLift.h"
+#include "commands/DropLift.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -65,6 +67,7 @@ class RobotContainer {
     return &mDriverController;
   }
   
+  void dropLift();
 
  private:
  
@@ -115,6 +118,7 @@ class RobotContainer {
   Shooter mShooter;
   BallJam mBallJamCommand{&mIndexer, &mShooter};
   IndexPowerCell mIndexCommand{&mIndexer};
+  IndexSingleCell mIndexOnceCommand{&mIndexer};
   LowerArm mLowerArmCommand{&mIntake, &mIndexer};
   PrepShooting mPrepShootingSlow{&mIndexer, &mShooter, kSlowSpeed};
   PrepShooting mPrepShootingMed{&mIndexer, &mShooter, kMedSpeed};
@@ -136,6 +140,10 @@ class RobotContainer {
   //cs::UsbCamera mCamera3;
   NextCamera mNextCamCommand{&mCamera1, &mCamera2};
   PreviousCamera mPrevCamCommand{&mCamera1, &mCamera2};
+
+  Pneumatics mPneumatics;
+  ToggleLift mToggleLift{&mPneumatics};
+  DropLift mDropLift{&mPneumatics};
 
   void ConfigureButtonBindings();
 };

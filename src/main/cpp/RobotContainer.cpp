@@ -31,7 +31,7 @@ RobotContainer::RobotContainer()
     .WithSize (4,3)
     .WithPosition (4,0);
   
-  mIndexer.SetDefaultCommand(std::move(mIndexCommand));
+  //mIndexer.SetDefaultCommand(std::move(mIndexCommand));
   
   mCameraServo.SetDefaultCommand(std::move(mServoCommand));
   mCameraServo.setServoJoystick(&mOperatorController);
@@ -40,9 +40,12 @@ RobotContainer::RobotContainer()
 void RobotContainer::ConfigureButtonBindings() {
   // Configure your button bindings here
   mDriverButtonA.WhenPressed(&mFlipDriveCommand, true);//(&mPrepShootingFast, true);
-  mDriverButtonB.WhenHeld(&mPositionCommand, true);//(&mPrepShootingMed, true);
-  mDriverButtonX.WhenHeld(&mRotateCommand, true);//(&mStopShootingCommand, false);
-  mDriverButtonY.WhenHeld(&mManualPanelCommand, false);//(&mPrepShootingSlow, true);
+  //mDriverButtonB.WhenHeld(&mPositionCommand, true);//(&mPrepShootingMed, true);
+  //mDriverButtonX.WhenHeld(&mRotateCommand, true);//(&mStopShootingCommand, false);
+  mDriverButtonX.WhenPressed(&mIndexOnceCommand, true);
+  //mDriverButtonY.WhenHeld(&mManualPanelCommand, false);//(&mPrepShootingSlow, true);
+  //mDriverButtonY.WhenHeld(&mManualPanelCommand, false);//(&mPrepShootingSlow, true);
+  mDriverButtonB.WhenPressed(&mToggleLift, true);
   mDriverButtonLB.WhenHeld(&mSlowLeftCommand, true);
   mDriverButtonRB.WhenHeld(&mSlowRightCommand, true);
   //mDriverButtonRMenu.WhenPressed(&mFlipDriveCommand, false);
@@ -73,4 +76,8 @@ frc2::Command* RobotContainer::GetAutonomousCommand(int slot, bool shoot, int mo
   //mAutoCommand.setAutoConfig(slot, shoot, move, shoot2);
   //return &mAutoCommand;
   return new AutonomousCode(&mTankDrive, &mIntake, &mIndexer, &mShooter, slot, shoot, move, shoot2);
+}
+
+void RobotContainer::dropLift() {
+  mDropLift.Schedule();
 }
