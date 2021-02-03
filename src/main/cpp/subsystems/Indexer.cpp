@@ -12,7 +12,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 Indexer::Indexer():
-    mIndexerConveyer{kIndexChannel,frc::Relay::kBothDirections},
+    mIndexerConveyer{kIndexChannel},
     mIntakeSensor{kDIOIntake},
     mBottomSensor{kDIOBottom},
     mTopSensor{kDIOTop},

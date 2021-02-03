@@ -43,7 +43,6 @@
 #include "commands/controlpanel/PositionControlPanel.h"
 #include "commands/controlpanel/StopControlPanel.h"
 #include "commands/auto/AutonomousCode.h"
-#include "commands/Climb.h"
 #include "commands/MoveCameraServo.h"
 #include "commands/NextCamera.h"
 #include "commands/PreviousCamera.h"
@@ -135,9 +134,6 @@ class RobotContainer {
   StopControlPanel mStopPanelCommand{&mControlPanel, &mTankDrive};
   ManualControlPanel mManualPanelCommand{&mControlPanel};
 
-  
-  Climber mClimber{&mOperatorController}; 
-  Climb mClimbCommand{&mClimber};
 
   cs::UsbCamera mCamera1;
   cs::UsbCamera mCamera2;
