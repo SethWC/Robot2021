@@ -55,7 +55,7 @@ void RobotContainer::ConfigureButtonBindings() {
   //mDriverUpDPad.WhenPressed(&mDeployManipulatorCommand, false);
   //mDriverDownDPad.WhenPressed(&mRetractManipulatorCommand, false);
 
-  //mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);//(&mRotateCommand, true);
+  mOperatorButtonA.WhenPressed(&mPrepShootingSlow, true);//(&mRotateCommand, true);
   mOperatorButtonB.WhenPressed(&mPrepShootingMed, true);//(&mPositionCommand, true);
   mOperatorButtonX.WhenHeld(&mStopShootingCommand, false);//(&mStopPanelCommand, false);
   mOperatorButtonY.WhenPressed(&mPrepShootingFast, true);//(&mManualPanelCommand, true);

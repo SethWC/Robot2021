@@ -82,7 +82,7 @@ float constexpr kAutoMoveTicks = 3 * 50; //3 sec * 50 ticks/sec
 
 //Shooter Speeds
 float constexpr kSlowSpeed = 0.5;
-float constexpr kMedSpeed = 0.9;
+float constexpr kMedSpeed = 0.8;
 float constexpr kFastSpeed = 1.0;
 
 //Indexer Constants
