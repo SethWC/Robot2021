@@ -13,15 +13,15 @@ ToggleLift::ToggleLift(Pneumatics* pPneumatics) : mpPneumatics{pPneumatics} {
 }
 
 // Called when the command is initially scheduled.
-void ToggleLift::Initialize() {}
-
-// Called repeatedly when this Command is scheduled to run
-void ToggleLift::Execute() {
+void ToggleLift::Initialize() {
   mpPneumatics->toggleLift();
 }
+
+// Called repeatedly when this Command is scheduled to run
+void ToggleLift::Execute() {}
 
 // Called once the command ends or is interrupted.
 void ToggleLift::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool ToggleLift::IsFinished() { return false; }
+bool ToggleLift::IsFinished() { return true; }
