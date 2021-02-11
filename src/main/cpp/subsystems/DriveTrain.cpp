@@ -15,7 +15,8 @@ DriveTrain::DriveTrain():
     mDriveLeft2{kBottomLeftMotor}, 
     mDriveRight1{kTopRightMotor}, 
     mDriveRight2{kBottomRightMotor},
-    mIndexerConveyer{kIndexerMotor}
+    mIndexerConveyer{kIndexerMotor},
+    mIntakeRoller{kIntakeRoller}
  {
 
 }
@@ -41,11 +42,12 @@ void DriveTrain::driveWithPixy() {
     double leftSpeed = (mAnalogLeft.GetVoltage() - 2.5) / 2.5;
     double rightSpeed = (mAnalogRight.GetVoltage() - 2.5) / 2.5;
     
-    mDrive.TankDrive(-leftSpeed, -rightSpeed, false);
+    mDrive.TankDrive(-leftSpeed * 2, -rightSpeed * 2, false);
     printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
 
     if (!mTopSensor.Get()) {
-        mIndexerConveyer.Set(frc::Relay::kForward);
+        mIndexerConveyer.Set(0.25);
+        mIntakeRoller.Set(-0.5);
     }
 }
 

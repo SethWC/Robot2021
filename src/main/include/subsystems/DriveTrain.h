@@ -50,7 +50,8 @@ class DriveTrain : public frc2::SubsystemBase {
   WPI_TalonSRX mDriveRight1;
   WPI_TalonSRX mDriveRight2;
 
-  frc::Relay mIndexerConveyer;
+  WPI_TalonSRX mIndexerConveyer;
+  WPI_TalonSRX mIntakeRoller;
 
   frc::SpeedControllerGroup mLeft{mDriveLeft1, mDriveLeft2};
   frc::SpeedControllerGroup mRight{mDriveRight1, mDriveRight2};
