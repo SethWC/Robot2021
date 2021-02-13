@@ -42,13 +42,13 @@ void DriveTrain::driveWithPixy() {
     double leftSpeed = (mAnalogLeft.GetVoltage() - 2.5) / 2.5;
     double rightSpeed = (mAnalogRight.GetVoltage() - 2.5) / 2.5;
     
-    mDrive.TankDrive(-leftSpeed * 2, -rightSpeed * 2, false);
+    mDrive.TankDrive(-leftSpeed, -rightSpeed, false);
     printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
 
-    if (!mTopSensor.Get()) {
+    if (mTopSensor.Get()) {
         mIndexerConveyer.Set(0.25);
-        mIntakeRoller.Set(-0.5);
     }
+    mIntakeRoller.Set(-0.5);
 }
 
 void DriveTrain::arcadeDrive(){
