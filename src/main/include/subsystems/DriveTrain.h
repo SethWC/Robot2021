@@ -24,6 +24,7 @@ class DriveTrain : public frc2::SubsystemBase {
   void arcadeDrive();
   void driveFromMemory();
   void toggleDrive();
+  bool isFinished() { return finished; };
   void setDriverJoystick(frc::XboxController* pDriverJoystick){
     mpDriverJoystick = pDriverJoystick;
   };
@@ -52,6 +53,7 @@ class DriveTrain : public frc2::SubsystemBase {
  
   bool on = false;
   bool inverted = false;
+  bool finished = false;
 
   double leftSpeed, rightSpeed, speed, rotation;
 

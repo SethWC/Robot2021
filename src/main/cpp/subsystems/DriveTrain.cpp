@@ -35,7 +35,13 @@ DriveTrain::DriveTrain():
 }
 
 // This method will be called once per scheduler run
-void DriveTrain::Periodic() {}
+void DriveTrain::Periodic() {    
+    if (inf.eof()) {
+        finished = true;
+        inf.close();
+        printf("Finished file\n");
+    }
+}
 
 void DriveTrain::tankDrive(){
     

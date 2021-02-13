@@ -24,4 +24,4 @@ void DriveFromMemory::Execute() {
 void DriveFromMemory::End(bool interrupted) {}
 
 // Returns true when the command should end.
-bool DriveFromMemory::IsFinished() { return false; }
+bool DriveFromMemory::IsFinished() { return mpDriveTrain->isFinished(); }
