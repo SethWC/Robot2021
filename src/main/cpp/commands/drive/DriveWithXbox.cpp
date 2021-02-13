@@ -31,7 +31,9 @@ void DriveWithXbox::Execute() {
 }
 
 // Called once the command ends or is interrupted.
-void DriveWithXbox::End(bool interrupted) {}
+void DriveWithXbox::End(bool interrupted) {
+  mpTankDrive->fileClose();
+}
 
 // Returns true when the command should end.
 bool DriveWithXbox::IsFinished() { return false; }

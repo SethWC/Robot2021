@@ -27,6 +27,7 @@ class DriveTrain : public frc2::SubsystemBase {
   void setDriverJoystick(frc::XboxController* pDriverJoystick){
     mpDriverJoystick = pDriverJoystick;
   };
+  void fileClose() { outf.close(); };
   bool flipDrive();
 
   /**
