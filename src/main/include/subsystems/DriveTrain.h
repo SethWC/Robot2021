@@ -12,7 +12,8 @@
 #include <ctre/Phoenix.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
-
+#include "Constants.h"
+#include <fstream>
 
 
 class DriveTrain : public frc2::SubsystemBase {
@@ -51,6 +52,10 @@ class DriveTrain : public frc2::SubsystemBase {
  
   bool on = false;
   bool inverted = false;
+
+  std::ofstream outf{"/U/spdLog.txt"};
+  const int printEvery = 5;
+  int counter = 0;
 
 
   // Components (e.g. motor controllers and sensors) should generally be

@@ -27,6 +27,13 @@ DriveTrain::DriveTrain():
     .WithWidget(frc::BuiltInWidgets::kBooleanBox)
     .WithPosition (1,0);
 
+    outf << printEvery << " ";
+
+    #ifdef USEARCADE
+    outf << "1\n";
+    #else
+    outf << "0\n";
+    #endif
 }
 
 // This method will be called once per scheduler run
@@ -43,6 +50,10 @@ void DriveTrain::tankDrive(){
         mDrive.TankDrive(rightSpeed, leftSpeed, true);
     }
     //printf("Driving: %f, %f\n", leftSpeed, rightSpeed);
+    if (counter == 0) {
+        outf << leftSpeed << " " << rightSpeed << "\n";
+    }
+    counter = (counter + 1) % printEvery;
 }
 
 void DriveTrain::arcadeDrive(){
@@ -54,6 +65,10 @@ void DriveTrain::arcadeDrive(){
     else {
         mDrive.ArcadeDrive(speed, rotation, true);
     }
+    if (counter == 0) {
+        outf << speed << " " << rotation << "\n";
+    }
+    counter = (counter + 1) % printEvery;
 }
 
 void DriveTrain::stop(){

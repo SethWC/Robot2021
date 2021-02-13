@@ -23,10 +23,11 @@ void DriveWithXbox::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void DriveWithXbox::Execute() {
-
+#ifdef USEARCADE
   mpTankDrive->arcadeDrive();
-  //printf("running drive!");
-
+#else
+  mpTankDrive->tankDrive();
+#endif
 }
 
 // Called once the command ends or is interrupted.
