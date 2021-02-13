@@ -18,7 +18,7 @@ RobotContainer::RobotContainer()
   // Configure the button bindings
   ConfigureButtonBindings();
 
-  mTankDrive.SetDefaultCommand(std::move(mDriveCommand));
+  mTankDrive.SetDefaultCommand(std::move(mDriveFromMemory));
   mTankDrive.setDriverJoystick(&mDriverController);
 
   mCamera1 = frc::CameraServer::GetInstance()->StartAutomaticCapture(0);

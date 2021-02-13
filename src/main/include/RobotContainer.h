@@ -26,6 +26,7 @@
 #include "subsystems/Lights.h"
 
 #include "commands/drive/DriveWithXbox.h"
+#include "commands/drive/DriveFromMemory.h"
 #include "commands/drive/SlowTurn.h"
 #include "commands/drive/FlipDrive.h"
 #include "commands/powercell/BallJam.h"
@@ -106,6 +107,7 @@ class RobotContainer {
 
   DriveTrain mTankDrive;
   DriveWithXbox mDriveCommand{&mTankDrive};
+  DriveFromMemory mDriveFromMemory{&mTankDrive};
   SlowTurn mSlowLeftCommand{&mTankDrive, false};
   SlowTurn mSlowRightCommand{&mTankDrive, true};
   FlipDrive mFlipDriveCommand{&mTankDrive};

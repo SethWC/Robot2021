@@ -55,7 +55,7 @@ class DriveTrain : public frc2::SubsystemBase {
 
   double leftSpeed, rightSpeed, speed, rotation;
 
-  std::ifstream inf{"/media/sda1/spdLog.txt"};
+  std::ifstream inf{"/U/spdLog.txt"};
   std::string strInput;
   int printEvery, driveMode;
   int counter = 0;
