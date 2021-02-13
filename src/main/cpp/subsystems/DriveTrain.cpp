@@ -27,6 +27,11 @@ DriveTrain::DriveTrain():
     .WithWidget(frc::BuiltInWidgets::kBooleanBox)
     .WithPosition (1,0);
 
+    inf >> strInput;
+    printEvery = std::stod(strInput);
+
+    inf >> strInput;
+    driveMode = std::stod(strInput);
 }
 
 // This method will be called once per scheduler run
@@ -34,8 +39,13 @@ void DriveTrain::Periodic() {}
 
 void DriveTrain::tankDrive(){
     
-    double leftSpeed = mpDriverJoystick->GetRawAxis(1); //Cap: 690rpm
-    double rightSpeed = mpDriverJoystick->GetRawAxis(5); //Cap: 697rpm
+    if (counter == 0) {
+        inf >> strInput;
+        leftSpeed = std::stod(strInput);
+        inf >> strInput;
+        rightSpeed = std::stod(strInput);
+    }
+    counter = (counter + 1) % printEvery;
     if (!inverted) {
         mDrive.TankDrive(-leftSpeed,-rightSpeed,true);
     }
@@ -46,13 +56,27 @@ void DriveTrain::tankDrive(){
 }
 
 void DriveTrain::arcadeDrive(){
-    double speed = 0.75 * mpDriverJoystick->GetRawAxis(1); //Cap: 690rpm
-    double rotation = 0.75 * mpDriverJoystick->GetRawAxis(4); //Cap: 697rpm
+    if (counter == 0) {
+        inf >> strInput;
+        speed = std::stod(strInput);
+        inf >> strInput;
+        rotation = std::stod(strInput);
+    }
+    counter = (counter + 1) % printEvery;
     if (!inverted) {
         mDrive.ArcadeDrive(-speed, rotation, true);
     }
     else {
         mDrive.ArcadeDrive(speed, rotation, true);
+    }
+}
+
+void DriveTrain::driveFromMemory(){
+    if (driveMode == 0) {
+        tankDrive();
+    }
+    else {
+        arcadeDrive();
     }
 }
 

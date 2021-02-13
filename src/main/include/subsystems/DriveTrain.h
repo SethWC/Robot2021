@@ -12,7 +12,7 @@
 #include <ctre/Phoenix.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/XboxController.h>
-
+#include <fstream>
 
 
 class DriveTrain : public frc2::SubsystemBase {
@@ -22,6 +22,7 @@ class DriveTrain : public frc2::SubsystemBase {
   void move(double left, double right);
   void tankDrive();
   void arcadeDrive();
+  void driveFromMemory();
   void toggleDrive();
   void setDriverJoystick(frc::XboxController* pDriverJoystick){
     mpDriverJoystick = pDriverJoystick;
@@ -51,6 +52,13 @@ class DriveTrain : public frc2::SubsystemBase {
  
   bool on = false;
   bool inverted = false;
+
+  double leftSpeed, rightSpeed, speed, rotation;
+
+  std::ifstream inf{"/media/sda1/spdLog.txt"};
+  std::string strInput;
+  int printEvery, driveMode;
+  int counter = 0;
 
 
   // Components (e.g. motor controllers and sensors) should generally be
