@@ -12,16 +12,11 @@
 #include "subsystems/LM.h"
 #include "subsystems/DriveTrain.h"
 
-/**
- * An example command.
- *
- * <p>Note that this extends CommandHelper, rather extending CommandBase
- * directly; this is crucially important, or else the decorator functions in
- * Command will *not* work!
- */
 class LMYawToTarget
     : public frc2::CommandHelper<frc2::CommandBase, LMYawToTarget> {
  public:
+  std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
+
   LMYawToTarget(LM* pLM, DriveTrain* pDriveTrain);
 
   void Initialize() override;
@@ -32,7 +27,7 @@ class LMYawToTarget
 
   bool IsFinished() override;
 
-private:
+ private:
   LM* mpLM;
   DriveTrain* mpDriveTrain;
 };

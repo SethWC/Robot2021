@@ -7,18 +7,20 @@
 
 #include "commands/LMYawToTarget.h"
 
+// Subsystem dependencies.
 LMYawToTarget::LMYawToTarget(LM* pLM, DriveTrain* pDriveTrain): mpLM{pLM}, mpDriveTrain{pDriveTrain} {
-  // Use addRequirements() here to declare subsystem dependencies.
   AddRequirements(pLM);
   AddRequirements(pDriveTrain);
 }
 
 // Called when the command is initially scheduled.
 void LMYawToTarget::Initialize() {
+  printf("BeginYaw**********\n");
 }
 
-// Called repeatedly when this Command is scheduled to run
+// Called repeatedly when this Command is scheduled to run.
 void LMYawToTarget::Execute() {
+  printf("MotorYawLeft********** %f MotorYawRight********** %f\n", mpLM->left_command, mpLM->right_command);
   mpDriveTrain->move(mpLM->left_command, mpLM->right_command);
 }
 
@@ -30,4 +32,5 @@ void LMYawToTarget::End(bool interrupted) {
 // Returns true when the command should end.
 bool LMYawToTarget::IsFinished() {
     return mpLM->CheckR();
+    //return false;
 }

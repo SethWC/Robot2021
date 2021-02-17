@@ -16,29 +16,25 @@ class LM : public frc2::SubsystemBase {
   LM();
   bool limeLightHasTarget() {return m_LimelightHasTarget;}
   
-  float left_command;
-  float right_command;
+  float left_command; // +steering_adjust
+  float right_command; // -steering_adjust
   
   std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
-  
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  void Periodic();
-  bool CheckR();
+
+  void Periodic(); // Constantly gets network table values and calculates for left_command and right_command
+  bool CheckR(); // Checks if robot needs to yaw, if not, tx is greater than -1 and less than 1
 
  private:
-  bool m_LimelightHasTarget; //True if acquired target
+  bool m_LimelightHasTarget; // True if acquired target
   
-  double tx;
-  double ty;
-  double ta;
-  bool tv;
+  double tx; // Horizontal Offset From Crosshair To Target
+  double ty; // Vertical Offset From Crosshair To Target
+  double ta; // % of The Target Area to Screen Ratio
+  bool tv; // True if acquired target
 
-  float heading_error;
-  float steering_adjust = 0.0f;
+  float heading_error; // Horizontal Offset From Crosshair To Target
+  float steering_adjust = 0.0f; // Multiplied by Kp, subtracted by min_command if +tx, added by min_command if -tx
 
-  float Kp;
-  float min_command;
-
+  float Kp; // If  error > threshhold, this is a constant * motor command
+  float min_command; // If  error > threshhold, this is a constant + motor command if -tx or - motor command if +tx
 };
