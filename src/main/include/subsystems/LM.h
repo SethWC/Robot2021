@@ -8,6 +8,8 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
+#include "networktables/NetworkTable.h"
+#include "networktables/NetworkTableInstance.h"
 
 class LM : public frc2::SubsystemBase {
  public:
@@ -15,14 +17,31 @@ class LM : public frc2::SubsystemBase {
 
   double getShootSpeed();
 
+  bool limeLightHasTarget() {return m_LimelightHasTarget;}
+  
+  float left_command;
+  float right_command;
+  
+  std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
+  
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic();
+  bool CheckR();
 
  private:
-  double ta;
+  bool m_LimelightHasTarget; //True if acquired target
+  
+  double tx;
   double ty;
-  // Components (e.g. motor controllers and sensors) should generally be
-  // declared private and exposed only through public methods.
+  double ta;
+  bool tv;
+
+  float heading_error;
+  float steering_adjust = 0.0f;
+
+  float Kp;
+  float min_command;
+
 };

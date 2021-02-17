@@ -59,6 +59,7 @@ void RobotContainer::ConfigureButtonBindings() {
   mOperatorButtonLB.WhenHeld(&mBallJamCommand, true);
   mOperatorButtonRB.WhenHeld(&mResetCommand, true);
   mOperatorButtonRB.WhenReleased(&mRaiseArmCommand, true);
+  mOperatorLT.WhenHeld(&mLMYawToTarget, true);
   //must be added- mOperatorButtonLMenu(toggle danger buttons)
 
   //mOperatorButtonLMenu.WhenPressed(&mPrevCamCommand, true);
