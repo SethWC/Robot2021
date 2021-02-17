@@ -9,5 +9,9 @@
 
 LM::LM() {}
 
+double LM::getShootSpeed() {
+    return 0.5;
+}
+
 // This method will be called once per scheduler run
 void LM::Periodic() {}

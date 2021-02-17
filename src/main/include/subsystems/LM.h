@@ -13,14 +13,7 @@ class LM : public frc2::SubsystemBase {
  public:
   LM();
 
-  double getShootSpeed() {
-    if (0 < ty && ty < 0.5) {
-      return 0.5;
-    }
-    else {
-      return 1;
-    }
-  }
+  double getShootSpeed();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
